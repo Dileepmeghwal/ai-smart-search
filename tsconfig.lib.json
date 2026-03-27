@@ -1,0 +1,12 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "incremental": false,
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist"
+  },
+  "include": ["src/index.ts", "src/app/components/smart", "src/hooks", "src/providers"],
+  "exclude": ["node_modules", "src/app/api", "src/app/page.tsx", "src/app/layout.tsx", "src/app/demo"]
+}

@@ -1,26 +1,125 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-secondary: #ec4899;
+  --color-accent: #8b5cf6;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: #fbfbfe;
+  --foreground: #020617;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #020617;
+    --foreground: #f8fafc;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.2);
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.4);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SmartSearch CSS Custom Properties
+   Override any of these on the `.smart-search` element (or a parent) to fully
+   theme the component without touching component code.
+
+   Example — dark purple theme:
+     .my-dark { --ss-bg: #1e1e2e; --ss-border-color: #44475a; --ss-text-color: #cdd6f4; }
+   ───────────────────────────────────────────────────────────────────────────── */
+.smart-search {
+  /* ── Input wrapper ──────────────────────────────────── */
+  --ss-bg:                #ffffff;          /* input background                */
+  --ss-border-color:      #e2e8f0;          /* resting border                  */
+  --ss-focus-border:      #6366f1;          /* border on focus                 */
+  --ss-focus-ring:        rgba(99, 102, 241, 0.08); /* focus glow ring         */
+
+  /* ── Text ───────────────────────────────────────────── */
+  --ss-text-color:        #1e293b;          /* typed text colour               */
+  --ss-placeholder-color: #94a3b8;          /* placeholder / hint text         */
+  --ss-ghost-color:       rgba(148, 163, 184, 0.6); /* inline ghost completion  */
+
+  /* ── Icons ──────────────────────────────────────────── */
+  --ss-icon-color:        #94a3b8;          /* search / clear icons at rest    */
+  --ss-icon-active-color: #6366f1;          /* icons while input is focused    */
+
+  /* ── AI Badge ───────────────────────────────────────── */
+  --ss-badge-idle-bg:     #f8fafc;          /* badge when nothing is happening */
+  --ss-badge-idle-color:  #94a3b8;
+  --ss-badge-loading-bg:  #6366f1;          /* badge while AI is thinking      */
+  --ss-badge-loading-color: #ffffff;
+  --ss-badge-active-bg:   #10b981;          /* badge when complex query found  */
+  --ss-badge-active-color: #ffffff;
+
+  /* ── Status bar ─────────────────────────────────────── */
+  --ss-status-color:      #94a3b8;          /* status text + Tab hint          */
+  --ss-clear-color:       #94a3b8;          /* "Clear" button at rest          */
+  --ss-clear-hover-color: #6366f1;          /* "Clear" button on hover         */
+
+  /* ── Suggestions dropdown ───────────────────────────── */
+  --ss-dropdown-bg:       #ffffff;          /* dropdown background             */
+  --ss-dropdown-border:   #e2e8f0;          /* dropdown border & row dividers  */
+  --ss-dropdown-shadow:   0 8px 30px -4px rgba(0,0,0,0.12), 0 4px 12px -4px rgba(0,0,0,0.08);
+  --ss-dropdown-radius:   0.75rem;          /* dropdown corner radius          */
+  --ss-option-text:       #334155;          /* suggestion item text            */
+  --ss-option-hover-bg:   #f8fafc;          /* option background on hover      */
+  --ss-option-active-bg:  rgba(99, 102, 241, 0.08); /* keyboard-focused option */
+  --ss-option-active-text: #6366f1;
+
+  /* ── Filter tags ────────────────────────────────────── */
+  --ss-filter-bg:         rgba(99, 102, 241, 0.1);
+  --ss-filter-text:       #6366f1;
+}
+
+/* Dark-mode defaults (activated by prefers-color-scheme; override with a class) */
+@media (prefers-color-scheme: dark) {
+  .smart-search {
+    --ss-bg:              #0f172a;
+    --ss-border-color:    #1e293b;
+    --ss-text-color:      #f1f5f9;
+    --ss-placeholder-color: #475569;
+    --ss-ghost-color:     rgba(71, 85, 105, 0.7);
+    --ss-dropdown-bg:     #0f172a;
+    --ss-dropdown-border: #1e293b;
+    --ss-option-text:     #e2e8f0;
+    --ss-option-hover-bg: #1e293b;
+    --ss-badge-idle-bg:   #1e293b;
+    --ss-status-color:    #475569;
+    --ss-clear-color:     #475569;
+  }
 }

@@ -1,0 +1,6 @@
+src/
+node_modules/
+.git/
+.env.local
+tsconfig.json
+package-lock.json

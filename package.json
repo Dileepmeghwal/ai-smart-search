@@ -1,26 +1,68 @@
 {
   "name": "smart-ui-ai",
   "version": "0.1.0",
-  "private": true,
+  "description": "AI-powered React UI components — SmartSearch, SmartFormField with Gemini integration",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src/index.ts"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lib:build": "tsup",
+    "lib:dev": "tsup --watch",
+    "prepublishOnly": "npm run lib:build"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "framer-motion": "^12.35.2",
+    "lucide-react": "^0.577.0",
     "next": "16.1.6",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "^29.0.2",
+    "@rollup/plugin-node-resolve": "^16.0.3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.3",
+    "rollup": "^4.59.0",
+    "rollup-plugin-typescript2": "^0.36.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3"
+  },
+  "keywords": [
+    "smart-search",
+    "ai",
+    "react",
+    "ui",
+    "gemini",
+    "autofill",
+    "nlp"
+  ],
+  "author": "",
+  "license": "ISC"
 }
